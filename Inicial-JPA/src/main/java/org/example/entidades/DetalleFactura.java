@@ -1,9 +1,11 @@
 package org.example.entidades;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Data
@@ -19,8 +21,10 @@ public class DetalleFactura {
     private double subtotal;
 
     @ManyToOne
-    private Articulo articulo;
+    @JoinColumn(name = "factura_id")
+    private Factura factura;
 
     @ManyToOne
-    private Factura factura;
+    @JoinColumn(name = "articulo_id")
+    private Articulo articulo;
 }

@@ -21,8 +21,9 @@ public class Categoria {
 
     private String denominacion;
 
-    @ManyToMany(mappedBy = "categorias")
     @Builder.Default
+    @ManyToMany(mappedBy = "categorias")
     private List<Articulo> articulos = new ArrayList<>();
 }
+
 

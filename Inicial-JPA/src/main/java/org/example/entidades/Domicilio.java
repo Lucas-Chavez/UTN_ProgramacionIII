@@ -1,9 +1,11 @@
 package org.example.entidades;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Data
@@ -18,6 +20,7 @@ public class Domicilio {
     private String nombreCalle;
     private int numero;
 
-    @OneToOne(mappedBy = "domicilio")
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 }

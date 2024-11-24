@@ -1,10 +1,11 @@
 package org.example.entidades;
 
-import lombok.AccessLevel;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class Cliente {
     private String apellido;
     private int dni;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     @Builder.Default
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Factura> facturas = new ArrayList<>();
 }
